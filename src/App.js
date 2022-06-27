@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import './App.css';
 import Header from './Components/Header/Header';
 import Main from './Components/Main/Main';
 import Wrapper from './Components/Wrapper/Wrapper';
@@ -7,12 +6,22 @@ import fetchCurrencyRate from './services/api/fetchCurrencyRate';
 
 function App() {
   const [exchangeRate, setExchangeRate] = useState([]);
+  const [status, setStatus] = useState('pending');
+
+  console.log(status);
+
+  const IS_PENDING = status === 'pending';
+  const IS_FULLFILLED = status === 'fullfilled';
+  const IS_REJECTED = status === 'rejected';
+  
   useEffect(() => {
     async function getCurrencyRate() {
       try {
         const rates = await fetchCurrencyRate();
         setExchangeRate([...rates]);
+        setStatus('fullfilled');
       } catch (error) {
+        setStatus('rejected');
         console.log(error.message);
       }
     };
@@ -29,16 +38,30 @@ function App() {
     return tableRates;
   };
 
+  console.log(exchangeRate);
+
   return (
-    exchangeRate.length !== 0 ?
-        (<div className="App">
+    <div className="App">
+
+    {IS_PENDING && 
+        <Wrapper>
+          <h1>Loading exchange rates, please wait...</h1>
+        </Wrapper>}
+
+    {IS_FULLFILLED && 
+
           <Wrapper>
-            <Header rates={exchangeRate} />
+            <Header rates={[...exchangeRate]} />
             <Main rates={tableRates()} />
-          </Wrapper>
-        </div>)
-        : <h1>Loading exchange rates, please wait...</h1>
+          </Wrapper>}
     
+    {IS_REJECTED &&
+          <Wrapper>
+            <h1>Oops, something gone wrong... Try again or call admin for help</h1>
+          </Wrapper>}
+    
+        
+    </div>
   );
 }
 

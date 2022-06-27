@@ -1,0 +1,11 @@
+.rate__list{
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.rate__item{
+    text-align: center;
+}

@@ -1,3 +1,7 @@
+This single page React JS App project of a currency converter between UAH, USD and EUR was
+created as a test task according to it`s requirements and using PJSC "PrivatBank" API.
+
+____________________________________________________________________________________
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

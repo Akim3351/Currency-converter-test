@@ -1,10 +1,15 @@
-import { Layout } from './Wrapper.styled';
+import propTypes from "prop-types";
+import css from './Wrapper.module.css';
 
 export default function Wrapper(props) {
   return (
-    <Layout>
+    <div className={css.layout}>
       {props.children}
-    </Layout>
+    </div>
 
   );
-}
+};
+
+Wrapper.propTypes = {
+  children: propTypes.element.isRequired,
+};

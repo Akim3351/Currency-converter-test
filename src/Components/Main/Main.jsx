@@ -1,5 +1,8 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
+import SubTitle from '../SubTitle/SubTitle';
 import CurrencyInput from "../CurrencyInput/CurrencyInput";
+import propTypes from "prop-types";
+import css from './Main.module.css';
 
 
 export default function Main({ rates }) {
@@ -13,16 +16,6 @@ export default function Main({ rates }) {
         setCountRates(rates);
     }, [rates]);
     
-
-    // useEffect(() => {
-    //     if (!!rates) {
-    //     function init() {
-    //         setLeftSideValue(1);
-    //     }
-    //     init();
-    //     }
-    // }, [rates]);
-
       function format(number) {
     return number.toFixed(2);
     }
@@ -48,8 +41,10 @@ export default function Main({ rates }) {
   }
 
     return (
-        <div>
-            <h2>Enter currency and amount to convert</h2>
+        <div className={css.main}>
+            <SubTitle
+              text="Enter currency and amount to convert"
+            />
             <CurrencyInput
                 onValueChange={handleLeftSideValueChange}
                 onCurrencyChange={handleLeftSideCurrencyChange}
@@ -64,4 +59,8 @@ export default function Main({ rates }) {
                 selectedCurrency={rightSideCurrency} />
         </div>
     )
+};
+
+Main.propTypes = {
+  rates: propTypes.object,
 };

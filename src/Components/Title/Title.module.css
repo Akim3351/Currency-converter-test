@@ -1,0 +1,8 @@
+.header__title{
+    margin: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    height: 35px;
+    text-decoration: underline 4px solid #000;
+};

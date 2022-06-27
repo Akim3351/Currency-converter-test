@@ -1,0 +1,23 @@
+.form__wrapper{
+    padding: 15px 20px;
+    background-color: #b3b4b4;
+    display: flex;
+    justify-content: center;
+}
+
+.form__input,
+.form__select{
+    height: 25px;
+    border: none;
+    box-sizing: border-box;
+    border-radius: 2px;
+}
+
+.form__input:focus,
+.form__select:focus{
+    outline: none;
+}
+
+.form__select:hover{
+    cursor: pointer;
+}

@@ -1,45 +1,43 @@
 import { useEffect } from "react";
-import { v4 } from "uuid";
-import { propTypes } from 'prop-types';
+import RateTable from "../RateTable/RateTable";
+import Title from "../Title/Title";
+import SubTitle from "../SubTitle/SubTitle";
+import css from "./Header.module.css";
 
 
-export default function Header({ rates }) {
+const Header = ({rates}) => {
+    console.log(rates);
     useEffect(() => {
     }, [rates]);
 
-    
-    return (
-    rates.length !== 0 ?
-            <>
-                <h1>My Simple Converter</h1>
-                <div>
-                <h2>Recent currency rate (Buy/Sale):</h2>
-                    {rates.length > 0 &&
-                        (<ul>
-                            {rates.map(rate => {return (
-                                <li key={v4()}>
-                                    <span>1 {rate.ccy}:</span>
-                                    <span> {rate.normalizedBuyValue} {rate.base_ccy} /</span>
-                                    <span> {rate.normalizedSaleValue} {rate.base_ccy}</span>
-                                </li>
-                            )})
-                            }
-                        </ul>)}
-                </div>
-            </>
-            :
-            <h1>Loading...</h1>
-        );
-};
+    const ratesLength = rates?.length;
+    console.log(ratesLength);
+        return (
+            <header className={css.header}>
+                <Title
+                    text="My Converter"
+                />
+                <SubTitle
+                    text="Recent currency rate (Buy/Sale):"
+                    />                    
+                <RateTable
+                    rates={rates}
+                />
+            </header> 
+)
+            
+                // <header>
+                //     <Title
+                //         text="My Converter"
+                //     />
+                //     <SubTitle
+                //         text="Recent currency rate (Buy/Sale):"
+                //         />                    
+                //     <RateTable
+                //         rates={rates}
+                //     />
+                // <header/> 
+                
 
-Header.propTypes = {
-    rates: propTypes.arrayOf(
-        propTypes.shape({
-            ccy: propTypes.string,
-            base_ccy: propTypes.string,
-            normalizedBuyValue: propTypes.string,
-            normalizedSaleValue: propTypes.string,
-        })
-    ),
 };
-
+export default Header;
