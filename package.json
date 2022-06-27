@@ -2,6 +2,7 @@
   "name": "currency-converter-test",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://akim3351.github.io/currency-converter-test/",
   "dependencies": {
     "@emotion/styled": "^11.9.3",
     "@testing-library/jest-dom": "^5.16.4",
