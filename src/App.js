@@ -8,8 +8,6 @@ function App() {
   const [exchangeRate, setExchangeRate] = useState([]);
   const [status, setStatus] = useState('pending');
 
-  console.log(status);
-
   const IS_PENDING = status === 'pending';
   const IS_FULLFILLED = status === 'fullfilled';
   const IS_REJECTED = status === 'rejected';
@@ -38,8 +36,6 @@ function App() {
     return tableRates;
   };
 
-  console.log(exchangeRate);
-
   return (
     <div className="App">
 
@@ -50,10 +46,12 @@ function App() {
 
     {IS_FULLFILLED && 
 
-          <Wrapper>
+        <Wrapper>
+          <>
             <Header rates={[...exchangeRate]} />
             <Main rates={tableRates()} />
-          </Wrapper>}
+          </>
+        </Wrapper>}
     
     {IS_REJECTED &&
           <Wrapper>

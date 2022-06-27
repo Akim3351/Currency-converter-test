@@ -6,12 +6,9 @@ import css from "./Header.module.css";
 
 
 const Header = ({rates}) => {
-    console.log(rates);
     useEffect(() => {
     }, [rates]);
 
-    const ratesLength = rates?.length;
-    console.log(ratesLength);
         return (
             <header className={css.header}>
                 <Title
